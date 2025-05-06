@@ -7,18 +7,27 @@ import pickle
 
 # read data
 df = pd.read_csv("./data/clean_data.csv")
-# split data
+cat_col_df = df.select_dtypes("object") 
+num_col_df = df.select_dtypes(exclude="object") 
+
+cat_col = df.select_dtypes("object").columns.to_list()
+num_col = df.select_dtypes(exclude="object").columns.to_list()
+
+df = pd.concat([cat_col_df,num_col_df],axis=1)
+
+
+## split data
 x = df.drop(columns="msrp")
 y = df["msrp"]
+
 x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=.33,random_state=42)
 
 # encoding
-cat_col = df.select_dtypes("object").columns.tolist()
+print(x_train.columns)
 oe  = OrdinalEncoder()
 oe.fit(x_train[cat_col])
 x_train[cat_col] = oe.transform(x_train[cat_col])
 x_test[cat_col] = oe.transform(x_test[cat_col])
-
 pickle.dump(oe,open("../car_price_prediction_system/pickle_models/encoder.pkl","wb"))
  
 
