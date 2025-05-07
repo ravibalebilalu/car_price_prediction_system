@@ -10,7 +10,7 @@
    2. numpy
    3. sklearn
    4. pickle
-   5. flask🚙
+   5. flask
    6. matplotlib
    7. seaborn
 
