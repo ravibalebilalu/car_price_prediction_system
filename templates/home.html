@@ -1,51 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        body{
-            background-color: black;
-            color: white;
-        }
-    </style>
-</head>
-<body>
-    <h1>SHREEKRISHNA</h1>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            body {
+                background-color: black;
+                color: white;
+            }
 
+            .flexbox {
+                display: flex;
+                justify-content: center;
+                align-items: center;
 
- <form action="{{'predict'}}" method="post">
+                flex-wrap: wrap;
+                gap: 60px;
+                margin: 10px;
+            }
+            form{
+               
+                margin: 40px;
+            }
 
-      <label for="make">MAKE</label> <input type="text" name="make" id="make">
-    
-       <label for="model">Model</label> <input type="text" name="model" id="model">
-       <label for="engine_fuel_type">Engine Fuel Type</label> <input type="text" name="engine_fuel_type" id="engine_fuel_type">
-      <label for="transmission_type"> Transmission Type</label> <input type="text" name="transmission_type" id="transmission_type">
-  <label for="driven_wheels">Driven Wheels</label> <input type="text" name="driven_wheels" id="driven_wheels">
-        <label for="vehicle_size">Vehicle Size</label> <input type="text" name="vehicle_size" id="vehicle_size">
-       <label for="vehicle_style">Vehicle Style</label> <input type="text" name="vehicle_style" id="vehicle_style">
-    <label for="year">Year</label> <input type="text" name="year" id="year">
-        <label for="engine_hp">Engine HP</label> <input type="text" name="engine_hp" id="engine_hp">
+            button {
+                background-color: darkkhaki;
+                padding: 10px;
+                border-radius: 20px;
+                color: blue;
+                font-size: 30px;
+                font-weight: bold;
+            }
+         h1{
+            color: green;
+            text-align: center;
+         }
+         span{
+            color: blueviolet;
+         }
+        </style>
+    </head>
+    <body>
+        <h1>SHREEKRISHNA</h1>
 
-     <label for="engine_cylinders">Engine Cylinders</label> <input type="text" name="engine_cylinders" id="engine_cylinders">
+        <form action="{{'predict'}}" method="post" class="flexbox">
+            <div>
+                <label for="make">MAKE</label>
 
-         <label for="number_of_doors">Number Of Doors</label> <input type="text" name="number_of_doors" id="number_of_doors">
-      <label for="highway_mpg">Highway MPG</label> <input type="text" name="highway_mpg" id="highway_mpg">
-           <label for="city_mpg">City MPG</label> <input type="text" name="city_mpg" id="city_mpg">
-    popularity    <label for="popularity">Popularity</label> <input type="text" name="popularity" id="popularity">
-    performance      <label for="performance">Performance</label> <input type="text" name="performance" id="performance">
-    high-performance
-    crossover
-    hybrid
-    luxury 
-    flex_fuel
-    factory_tuner
-    hatchback 
-    diesel
-    exotic
- </form>
+                <select name="make" id="make">
+                    {% for m in make_list %}
+                    <option value="{{m}}">{{m}}</option>
+                    {% endfor %}
+                </select>
+            </div>
 
+            <div>
+                <label for="model">Model</label>
+                <select name="model" id="model">
+                    {% for m  in model_list %}
+                    <option value="{{m}}">{{m}}</option>
+                    {% endfor %}
+                </select>
+            </div>
 
-</body>
+            <div>
+                <label for="engine_fuel_type">Engine Fuel Type</label>
+                <select name="engine_fuel_type" id="engine_fuel_type">
+                    {% for m in  engine_type_list %}
+                    <option value="{{m}}">{{m}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label for="transmission_type"> Transmission Type</label>
+                 <select name="transmission_type" id="transmission_type">
+                    {% for m in transmission_type_list %}
+                    <option value="{{m}}">{{m}}</option>
+                    {% endfor %}
+                 </select>
+            </div>
+            <div>
+                <label for="driven_wheels">Driven Wheels</label>
+                 <select name="driven_wheels" id="driven_wheels">
+                    {% for  m in driven_wheels_list  %}
+                    <option value="{{m}}">{{m}}</option>
+                    {% endfor %}
+                 </select>
+            </div>
+            <div>
+                <label for="vehicle_size">Vehicle Size</label>
+               <select name="vehicle_size" id="vehicle_size">
+                {% for m in vehicle_size_list %}
+                <option value="{{m}}">{{m}}</option>
+                {% endfor %}
+               </select>
+            </div>
+            <div>
+                <label for="vehicle_style">Vehicle Style</label>
+                 <select name="vehicle_style" id="vehicle_style">
+                    {% for m in vehicle_style_list  %}
+                    <option value="{{m}}">{{m}}</option>
+                    {% endfor %}
+                 </select>
+            </div>
+            <div>
+                <label for="year">Year</label>
+                 <select name="year" id="year">
+                    {% for y in year_list  %}
+                    <option value="{{y}}">{{y}}</option>
+                    {% endfor %}
+                 </select>
+            </div>
+            <div>
+                <label for="engine_hp">Engine HP</label>
+                <input type="text" name="engine_hp" id="engine_hp" />
+            </div>
+
+            <div>
+                <label for="engine_cylinders">Engine Cylinders</label>
+                <select name="engine_cylinders" id="engine_cylinders">
+                    {% for e in engine_cylinders_list %}
+                    <option value="{{e}}">{{e}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div>
+                <label for="number_of_doors">Number Of Doors</label>
+                <select name="number_of_doors" id="number_of_doors">
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+            <div>
+                <label for="highway_mpg">Highway MPG</label>
+                <input type="text" name="highway_mpg" id="highway_mpg" />
+            </div>
+            <div>
+                <label for="city_mpg">City MPG</label>
+                <input type="text" name="city_mpg" id="city_mpg" />
+            </div>
+            <div>
+                <label for="popularity">Popularity</label>
+               <input type="text" name="popularity" id="popularity">
+            </div>
+            <div>
+                <label for="performance">Performance</label>
+                <select name="performance" id="performance">
+                    <option value="1">True</option>
+                    <option value="0">False</option>
+                   </select>
+            </div>
+            <div>
+                <label for="high-performance">High Performance</label>
+                 <select name="high-performance" id="high-performance">
+                    <option value="1">True</option>
+                    <option value="0">False~</option>
+                 </select>
+            </div>
+            <div>
+                <label for="crossover">Crossover</label>
+                <select name="crossover" id="crossover">
+                    <option value="1">True</option>
+                    <option value="0">False</option>
+                 </select>
+            </div>
+            <div>
+                <label for="hybrid">Hybrid</label>
+                <select name="hybrid" id="hybrid">
+                    <option value="1">True</option>
+                    <option value="0">False</option>
+                 </select>
+            </div>
+            <div>
+                <label for="luxury">Luxury</label>
+                <select name="luxury" id="luxury">
+                    <option value="1">True</option>
+                    <option value="0">False</option>
+                 </select>
+            </div>
+            <div>
+                <label for="flex_fuel">Flex Fuel</label>
+                <select name="flex_fuel" id="flex_fuel">
+                    <option value="1">True</option>
+                    <option value="0">False</option>
+                 </select>
+            </div>
+            <div>
+                <label for="factory_tuner">Factory Tuner</label>
+                <select name="factory_tuner" id="factory_tuner">
+                    <option value="1">True</option>
+                    <option value="0">False</option>
+                 </select>
+            </div>
+            <div>
+                <label for="hatchback">Hatchback</label>
+                <select name="hatchback" id="hatchback">
+                    <option value="1">True</option>
+                    <option value="0">False</option>
+                 </select>
+            </div>
+            <div>
+                <label for="diesel">Diesel</label>
+                <select name="diesel" id="diesel">
+                    <option value="1">True</option>
+                    <option value="0">False</option>
+                 </select>
+            </div>
+            <div>
+                <label for="exotic">Exotic</label>
+                <select name="exotic" id="exotic">
+                    <option value="1">True</option>
+                    <option value="0">False</option>
+                 </select>
+            </div>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        <h1><span> Predicted Car Price : </span>{{result}}</h1>
+    </body>
 </html>

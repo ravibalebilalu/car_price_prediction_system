@@ -23,7 +23,7 @@ y = df["msrp"]
 x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=.33,random_state=42)
 
 # encoding
-print(x_train.columns)
+ 
 oe  = OrdinalEncoder()
 oe.fit(x_train[cat_col])
 x_train[cat_col] = oe.transform(x_train[cat_col])
@@ -36,7 +36,7 @@ sc = StandardScaler()
 sc.fit(x_train)
 x_train = sc.transform(x_train)
 x_test = sc.transform(x_test)
-
+ 
 pickle.dump(sc,open("../car_price_prediction_system/pickle_models/scaler.pkl","wb"))
 
 # model building
