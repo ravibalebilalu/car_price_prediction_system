@@ -1,6 +1,6 @@
 import pandas as pd 
 import numpy as np
-from sklearn.preprocessing import OrdinalEncoder,StandardScaler
+from sklearn.preprocessing import OrdinalEncoder, MinMaxScaler 
 from sklearn.model_selection import train_test_split 
 from sklearn.ensemble import RandomForestRegressor
 import pickle
@@ -32,7 +32,7 @@ pickle.dump(oe,open("../car_price_prediction_system/pickle_models/encoder.pkl","
  
 
 # scaling
-sc = StandardScaler()
+sc =  MinMaxScaler()
 sc.fit(x_train)
 x_train = sc.transform(x_train)
 x_test = sc.transform(x_test)
